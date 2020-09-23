@@ -17,21 +17,23 @@
     </tr>
     </tbody>
   </table>
-  <MailView v-if="openedEmail" :email="openedEmail"/>
+  <ModalView v-if="openedEmail" @closeModal="openedEmail = null">
+    <MailView :email="openedEmail" />
+  </ModalView>
 </template>
 
 <script>
 import { format } from 'date-fns';
 import axios from 'axios';
 import MailView from '@/components/MailView.vue';
+import ModalView from '@/components/ModalView.vue';
 
 import { ref } from 'vue';
 
-
 export default {
   async setup() {
-    let response = await axios.get('http://localhost:3000/emails')
-    let emails = response.data
+    let response = await axios.get('http://localhost:3000/emails');
+    let emails = response.data;
     return {
       format,
       emails,
@@ -39,30 +41,31 @@ export default {
     };
   },
   components: {
-    MailView
+    MailView,
+    ModalView
   },
   computed: {
     sortedEmails() {
       return this.emails.sort((e1, e2) => {
-        return e1.sentAt < e2.sentAt ? 1 : -1
-      })
+        return e1.sentAt < e2.sentAt ? 1 : -1;
+      });
     },
     unArchivedEmails() {
-      return this.sortedEmails.filter(e => !e.archived)
+      return this.sortedEmails.filter(e => !e.archived);
     }
   },
   methods: {
     openEmail(email) {
-      email.read = true
-      this.updateEmail(email)
-      this.openedEmail = email
+      email.read = true;
+      this.updateEmail(email);
+      this.openedEmail = email;
     },
     archiveEmail(email) {
-      email.archived = true
-      this.updateEmail(email)
+      email.archived = true;
+      this.updateEmail(email);
     },
     updateEmail(email) {
-      axios.put(`http://localhost:3000/emails/${email.id}`, email)
+      axios.put(`http://localhost:3000/emails/${email.id}`, email);
     }
   }
 };
