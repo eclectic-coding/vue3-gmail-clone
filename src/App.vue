@@ -115,6 +115,7 @@ input[type='checkbox']:checked {
 
 .email-display {
   text-align: left;
+  margin: 0 2em;
 }
 
 /* Mail Table */
