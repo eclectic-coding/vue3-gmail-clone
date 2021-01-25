@@ -18,7 +18,7 @@
     "@vue/cli-plugin-babel": "^4.5.11",
     "@vue/cli-service": "^4.5.11",
     "@vue/compiler-sfc": "^3.0.5",
-    "faker": "^5.1.0",
+    "faker": "^5.2.0",
     "vue-template-compiler": "^2.6.12"
   }
 }
