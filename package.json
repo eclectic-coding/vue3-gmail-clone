@@ -12,12 +12,12 @@
     "core-js": "^3.9.1",
     "date-fns": "^2.19.0",
     "marked": "^0.8.2",
-    "vue": "^3.0.8"
+    "vue": "^3.0.10"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.5.12",
     "@vue/cli-service": "^4.5.12",
-    "@vue/compiler-sfc": "^3.0.8",
+    "@vue/compiler-sfc": "^3.0.10",
     "faker": "^5.5.2",
     "vue-template-compiler": "^2.6.12"
   }
